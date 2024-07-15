@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://x33gbvwmoamd"]
+
+[ext_resource type="Script" path="res://EOSSetup.gd" id="1_ckf70"]
+
+[node name="EosSetup" type="Node3D"]
+script = ExtResource("1_ckf70")
