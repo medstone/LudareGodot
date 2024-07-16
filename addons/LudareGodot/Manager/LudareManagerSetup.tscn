@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfb57douh4plo"]
+
+[ext_resource type="Script" path="res://addons/LudareGodot/Manager/Script/LudareManagerSetup.gd" id="1_kd02m"]
+
+[node name="LudareManager" type="Node3D"]
+script = ExtResource("1_kd02m")
+GameId = "10"
+GameSecret = "UcA3(PVmV3FENAUYzT-GEQyaxVP8pCKBIg4YMai3l(GjSbPh33Bt)gxkqyJT0GadG1HB-SHkNpbT3H0ZyRHjjI*_3eQHHztfbr%d"

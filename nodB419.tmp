@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5m815ct70v0f"]
+
+[ext_resource type="PackedScene" uid="uid://dq3frcggicxdh" path="res://addons/LudareGodot/Menus/MenuIcon.tscn" id="1_0nary"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Button" parent="." instance=ExtResource("1_0nary")]

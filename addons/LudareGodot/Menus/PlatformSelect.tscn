@@ -1,0 +1,164 @@
+[gd_scene load_steps=21 format=3 uid="uid://bgbaimab8j05r"]
+
+[ext_resource type="Script" path="res://addons/LudareGodot/Menus/Scripts/PlatformSelect.gd" id="1_v4ds8"]
+[ext_resource type="Texture2D" uid="uid://bc7bg7njalny0" path="res://addons/LudareGodot/Icons/IconTransparent.png" id="3_g17fr"]
+[ext_resource type="Material" uid="uid://bdx0ldvj1pxe0" path="res://new_canvas_item_material.tres" id="5_klxig"]
+[ext_resource type="Texture2D" uid="uid://cujk86kva05u8" path="res://addons/LudareGodot/Icons/Platform Selection.png" id="7_pac8e"]
+[ext_resource type="Texture2D" uid="uid://bwjq4ho4ukcxk" path="res://addons/LudareGodot/Icons/ExitIcon.png" id="8_sujfs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxiks"]
+texture = ExtResource("7_pac8e")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oljjx"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxq6t"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v46b7"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rtp4"]
+font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pt5d"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iocqu"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve75y"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_6n71q"]
+offsets = PackedFloat32Array(0.984308, 0.99572, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.718973, 0.718973, 0.718973, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7r8pd"]
+gradient = SubResource("Gradient_6n71q")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gfew"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ku63x"]
+font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_go2iu"]
+bg_color = Color(1, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a05bv"]
+bg_color = Color(1, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5t7c"]
+bg_color = Color(1, 0, 0, 0)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v4ds8")
+
+[node name="Panel" type="Panel" parent="."]
+material = ExtResource("5_klxig")
+layout_mode = 0
+offset_left = 60.0
+offset_top = 90.0
+offset_right = 1860.0
+offset_bottom = 990.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_oxiks")
+
+[node name="PlatformPanel" type="Button" parent="Panel"]
+clip_contents = true
+layout_mode = 0
+offset_left = 300.0
+offset_top = 250.0
+offset_right = 750.0
+offset_bottom = 650.0
+scale = Vector2(1.01047, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_oljjx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxq6t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v46b7")
+expand_icon = true
+
+[node name="PlatformLabel" type="Label" parent="Panel/PlatformPanel"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 310.0
+offset_right = 375.0
+offset_bottom = 333.0
+text = "Platform"
+label_settings = SubResource("LabelSettings_5rtp4")
+horizontal_alignment = 1
+
+[node name="PlatformIcon" type="TextureRect" parent="Panel/PlatformPanel"]
+layout_mode = 0
+offset_left = 73.2331
+offset_top = 30.0
+offset_right = 373.233
+offset_bottom = 280.0
+expand_mode = 1
+
+[node name="LudarePanel" type="Button" parent="Panel"]
+clip_contents = true
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 250.0
+offset_right = 1500.0
+offset_bottom = 650.0
+scale = Vector2(1.01047, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8pt5d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iocqu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ve75y")
+icon = SubResource("GradientTexture1D_7r8pd")
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="Panel/LudarePanel"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 30.0
+offset_right = 375.0
+offset_bottom = 280.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4gfew")
+
+[node name="Label" type="Label" parent="Panel/LudarePanel"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 310.0
+offset_right = 375.0
+offset_bottom = 333.0
+text = "Ludare"
+label_settings = SubResource("LabelSettings_5rtp4")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/LudarePanel"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 30.0
+offset_right = 375.0
+offset_bottom = 280.0
+texture = ExtResource("3_g17fr")
+expand_mode = 1
+
+[node name="Message" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 751.0
+offset_right = 1497.0
+offset_bottom = 820.0
+label_settings = SubResource("LabelSettings_ku63x")
+horizontal_alignment = 1
+
+[node name="Exit" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 1715.0
+offset_top = 35.0
+offset_right = 1765.0
+offset_bottom = 85.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_go2iu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a05bv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v5t7c")
+icon = ExtResource("8_sujfs")
+expand_icon = true

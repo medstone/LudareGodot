@@ -1,20 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5m815ct70v0f"]
+[gd_scene load_steps=3 format=3 uid="uid://b5m815ct70v0f"]
 
-[ext_resource type="PackedScene" uid="uid://dq3frcggicxdh" path="res://LudareGodot/Menus/MenuIcon.tscn" id="1_0nary"]
-[ext_resource type="Script" path="res://LudareGodot/Manager/Script/LudareManagerSetup.gd" id="1_va2mw"]
-[ext_resource type="PackedScene" uid="uid://b5axbaye36i8i" path="res://steam_setup.tscn" id="2_o24q8"]
-[ext_resource type="PackedScene" uid="uid://x33gbvwmoamd" path="res://EOSSetup.tscn" id="2_qavd1"]
-[ext_resource type="Script" path="res://Steamsetup.gd" id="3_hysd6"]
+[ext_resource type="PackedScene" uid="uid://dq3frcggicxdh" path="res://addons/LudareGodot/Menus/MenuIcon.tscn" id="1_0nary"]
+[ext_resource type="PackedScene" uid="uid://cfb57douh4plo" path="res://addons/LudareGodot/Manager/LudareManagerSetup.tscn" id="2_vf0p5"]
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_va2mw")
-GameId = "10"
-GameSecret = "UcA3(PVmV3FENAUYzT-GEQyaxVP8pCKBIg4YMai3l(GjSbPh33Bt)gxkqyJT0GadG1HB-SHkNpbT3H0ZyRHjjI*_3eQHHztfbr%d"
-Platform = 2
-
-[node name="EosSetup" parent="." instance=ExtResource("2_qavd1")]
-
-[node name="SteamSetup" parent="." instance=ExtResource("2_o24q8")]
-script = ExtResource("3_hysd6")
 
 [node name="Button" parent="." instance=ExtResource("1_0nary")]
+
+[node name="LudareManager" parent="." instance=ExtResource("2_vf0p5")]

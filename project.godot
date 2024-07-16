@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-LudareManager="*res://LudareGodot/Manager/Script/LudareManager.gd"
 EOSGRuntime="*res://addons/epic-online-services-godot/runtime.gd"
+LudareManager="*res://addons/LudareGodot/Manager/Script/LudareManager.gd"
 
 [debug]
 
@@ -37,7 +37,7 @@ project/assembly_name="Ludare"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/LudareGodot/plugin.cfg")
 
 [rendering]
 

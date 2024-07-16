@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://dq3frcggicxdh"]
+
+[ext_resource type="Texture2D" uid="uid://ckcdnfy156osn" path="res://addons/LudareGodot/Icons/LudareLogoEOS.png" id="1_r6bna"]
+[ext_resource type="Script" path="res://addons/LudareGodot/Menus/Scripts/MenuIcon.gd" id="2_o2heg"]
+[ext_resource type="PackedScene" uid="uid://bgbaimab8j05r" path="res://addons/LudareGodot/Menus/PlatformSelect.tscn" id="3_q2qpq"]
+[ext_resource type="PackedScene" uid="uid://d2wwjemd6hcth" path="res://addons/LudareGodot/Menus/LoginScreen.tscn" id="4_3l7yx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb0la"]
+bg_color = Color(0.611765, 0.611765, 0.611765, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kc1jl"]
+bg_color = Color(0.611765, 0.611765, 0.611765, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eip7q"]
+bg_color = Color(0.611765, 0.611765, 0.611765, 0)
+
+[node name="Button" type="Button"]
+offset_left = 641.0
+offset_top = 91.0
+offset_right = 2686.0
+offset_bottom = 2099.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb0la")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kc1jl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eip7q")
+icon = ExtResource("1_r6bna")
+expand_icon = true
+script = ExtResource("2_o2heg")
+PlatformSelect = ExtResource("3_q2qpq")
+LoginScreen = ExtResource("4_3l7yx")
