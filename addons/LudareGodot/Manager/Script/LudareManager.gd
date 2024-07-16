@@ -108,7 +108,7 @@ func _callOnResponse():
 func _process(delta):
 	if LoggedIn == true:
 		UpdateTimer -= delta
-		#print(UpdateTimer)
 		if UpdateTimer <= 0:
 			_ludarePostUpdate("/RegisterGameContinue")
+			UpdateTimer = MaxUpdateTimer
 	pass

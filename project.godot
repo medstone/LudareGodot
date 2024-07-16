@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EOSGRuntime="*res://addons/epic-online-services-godot/runtime.gd"
 LudareManager="*res://addons/LudareGodot/Manager/Script/LudareManager.gd"
 
 [debug]
