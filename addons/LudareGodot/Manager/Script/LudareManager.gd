@@ -13,7 +13,7 @@ var OnClose: Callable
 var Callbacks: Dictionary
 var LoggedIn: bool
 var PlayerId: String
-var MaxUpdateTimer = 30
+var MaxUpdateTimer = 300
 var UpdateTimer = MaxUpdateTimer
 var StoredUsername
 var StoredHash
