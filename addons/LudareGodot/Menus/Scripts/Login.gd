@@ -1,4 +1,5 @@
 extends Node
+class_name LoginScreen
 
 var UsernameField
 var PasswordField
@@ -6,20 +7,33 @@ var Callbacks: Dictionary
 var closeAfter = 1.0
 var close = false
 var LoginMessage
+var RememberField
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	UsernameField = get_node("Panel/Panel/Label/LineEdit")
-	PasswordField = get_node("Panel/Panel/Label2/LineEdit")
-	var submitButton = get_node("Panel/Panel/Button")
-	var exitButton = get_node("Panel/Exit")
-	LoginMessage = get_node("Panel/Panel/Result")
+	UsernameField = get_node("Panel/Label/LineEdit")
+	PasswordField = get_node("Panel/Label2/LineEdit")
+	var submitButton = get_node("Panel/Button")
+	LoginMessage = get_node("Panel/Result")
+	RememberField = get_node("Panel/Label3/CheckBox")
 	submitButton.pressed.connect(self._submitPressed)
-	exitButton.pressed.connect((self._onClose))
+	var exitButton = get_node("Panel/Exit")
+	exitButton.pressed.connect(self._onClose)
+	if(LudareManager.Single.StoredUsername != null):
+		UsernameField.text = LudareManager.Single.StoredUsername
+	if(LudareManager.Single.StoredHash != null):
+		PasswordField.placeholder_text = "****************************"
+	
+func _registerClose():
+	var exitButton = get_node("Panel/Exit")
+	exitButton.pressed.connect(self._onClose)
 
 func _submitPressed():
 	LudareManager.Single._addOnResponse(self, Callable(self, "_onResponse"))
-	LudareManager.Single._tryLoginLudare(UsernameField.text, PasswordField.text)
+	if(PasswordField.text == "" ):
+		LudareManager.Single._tryLoginLudare(UsernameField.text, LudareManager.Single.StoredHash, true, RememberField.button_pressed)
+	else:
+		LudareManager.Single._tryLoginLudare(UsernameField.text, PasswordField.text, false, RememberField.button_pressed)
 
 func _onResponse(success: bool):
 	LudareManager.Single._removeOnResponse(self, Callable(self, "_onResponse"))
@@ -34,8 +48,8 @@ func _addOnClose(parent: Node, callback: Callable):
 		Callbacks[parent] = callback
 		
 func _removeOnClose(parent: Node, callback: Callable):
-	if(Callbacks.has(parent) == false):
-		Callbacks[parent] = callback
+	if(Callbacks.has(parent) == true && Callbacks[parent] == callback):
+		Callbacks[parent] = null
 		
 func _callOnClose():
 	for callback in Callbacks.values():
@@ -43,6 +57,7 @@ func _callOnClose():
 			callback.call()
 			
 func _onClose():
+	print("Base Login Close")
 	self.queue_free()
 
 func _closeOnSuccess():

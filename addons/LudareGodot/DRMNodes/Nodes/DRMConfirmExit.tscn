@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3ipsflff6mgo"]
+
+[ext_resource type="Texture2D" uid="uid://cujk86kva05u8" path="res://addons/LudareGodot/Icons/Platform Selection.png" id="1_i7v58"]
+[ext_resource type="Script" path="res://addons/LudareGodot/DRMNodes/Scripts/DRMConfirmExit.gd" id="1_imj8k"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kwoxn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nxoc"]
+texture = ExtResource("1_i7v58")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2atqj"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_tljsn"]
+font_size = 24
+
+[node name="MenuClose" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_imj8k")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("CanvasItemMaterial_kwoxn")
+layout_mode = 0
+offset_left = 460.0
+offset_top = 290.0
+offset_right = 1460.0
+offset_bottom = 790.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8nxoc")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.544
+anchor_top = 0.162
+anchor_right = 0.544
+anchor_bottom = 0.162
+offset_left = -204.0
+offset_right = 116.0
+offset_bottom = 50.0
+text = "Quit Out of Game?"
+label_settings = SubResource("LabelSettings_2atqj")
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.515
+anchor_top = 2.42
+anchor_right = 0.52
+anchor_bottom = 2.42
+offset_left = -225.0
+offset_top = -1008.0
+offset_right = 206.4
+offset_bottom = -971.0
+text = "Do you want to quit out of this game?"
+label_settings = SubResource("LabelSettings_tljsn")
+
+[node name="ConfirmButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013
+anchor_top = 4.297
+anchor_right = 0.013
+anchor_bottom = 4.297
+offset_left = 208.0
+offset_top = -1787.5
+offset_right = 357.0
+offset_bottom = -1723.5
+text = "Yes"
+
+[node name="DenyButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013
+anchor_top = 4.297
+anchor_right = 0.013
+anchor_bottom = 4.297
+offset_left = 670.0
+offset_top = -1787.5
+offset_right = 819.0
+offset_bottom = -1723.5
+text = "No"

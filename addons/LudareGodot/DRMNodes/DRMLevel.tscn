@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://b116tc5eq7hl7"]
+
+[ext_resource type="Script" path="res://addons/LudareGodot/DRMNodes/Scripts/DRMLudareFlowManager.gd" id="1_3dngs"]
+[ext_resource type="PackedScene" uid="uid://jnle0s1liv5n" path="res://addons/LudareGodot/DRMNodes/Nodes/DRMLoginScreen.tscn" id="2_58ci6"]
+[ext_resource type="PackedScene" uid="uid://cfb57douh4plo" path="res://addons/LudareGodot/Manager/LudareManagerSetup.tscn" id="2_kqho7"]
+[ext_resource type="PackedScene" uid="uid://cjwyn74ybwmwe" path="res://TestScene.tscn" id="4_g1jab"]
+
+[node name="DrmLevel" type="Node3D"]
+
+[node name="LudareManager" parent="." instance=ExtResource("2_kqho7")]
+GameId = ""
+GameSecret = ""
+
+[node name="LudareDRMFlowManager" type="Node3D" parent="."]
+script = ExtResource("1_3dngs")
+DRMLoginScreen = ExtResource("2_58ci6")
+SceneToLoad = ExtResource("4_g1jab")

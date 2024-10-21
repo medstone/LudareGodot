@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2wwjemd6hcth"]
+[gd_scene load_steps=18 format=3 uid="uid://jnle0s1liv5n"]
 
-[ext_resource type="Script" path="res://addons/LudareGodot/Menus/Scripts/Login.gd" id="1_eyvnt"]
-[ext_resource type="Texture2D" uid="uid://cujk86kva05u8" path="res://addons/LudareGodot/Icons/Platform Selection.png" id="2_6x4x8"]
-[ext_resource type="StyleBox" uid="uid://d0m4aq30dyg2a" path="res://addons/LudareGodot/Menus/SubmitStyleFlat.tres" id="3_q4irf"]
-[ext_resource type="Texture2D" uid="uid://c84570b0tp6j" path="res://addons/LudareGodot/Icons/LudareLogoTransparent.png" id="4_i2isc"]
-[ext_resource type="Texture2D" uid="uid://bwjq4ho4ukcxk" path="res://addons/LudareGodot/Icons/ExitIcon.png" id="5_pxc5s"]
+[ext_resource type="Script" path="res://addons/LudareGodot/DRMNodes/Scripts/DRMLoginScreen.gd" id="1_n8l3a"]
+[ext_resource type="PackedScene" uid="uid://b3ipsflff6mgo" path="res://addons/LudareGodot/DRMNodes/Nodes/DRMConfirmExit.tscn" id="2_dcvgd"]
+[ext_resource type="Texture2D" uid="uid://cujk86kva05u8" path="res://addons/LudareGodot/Icons/Platform Selection.png" id="2_nhnra"]
+[ext_resource type="StyleBox" uid="uid://d0m4aq30dyg2a" path="res://addons/LudareGodot/Menus/SubmitStyleFlat.tres" id="3_jhmsd"]
+[ext_resource type="Texture2D" uid="uid://c84570b0tp6j" path="res://addons/LudareGodot/Icons/LudareLogoTransparent.png" id="4_8faak"]
+[ext_resource type="Texture2D" uid="uid://bwjq4ho4ukcxk" path="res://addons/LudareGodot/Icons/ExitIcon.png" id="5_k3rws"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8fojp"]
-texture = ExtResource("2_6x4x8")
+texture = ExtResource("2_nhnra")
 
 [sub_resource type="LabelSettings" id="LabelSettings_6nala"]
 font_size = 30
@@ -24,19 +25,19 @@ bg_color = Color(1, 0, 0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kgta"]
 bg_color = Color(1, 0, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjpud"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6mtq"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a86ol"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4crt"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73cle"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfs7q"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sl25e"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbads"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os0so"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i7hx"]
 bg_color = Color(1, 1, 1, 1)
 
 [node name="Control" type="Control"]
@@ -46,7 +47,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_eyvnt")
+script = ExtResource("1_n8l3a")
+ExitMenu = ExtResource("2_dcvgd")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -102,11 +104,11 @@ offset_top = 691.0
 offset_right = 1078.0
 offset_bottom = 754.0
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = ExtResource("3_q4irf")
-theme_override_styles/hover = ExtResource("3_q4irf")
-theme_override_styles/pressed = ExtResource("3_q4irf")
-theme_override_styles/disabled = ExtResource("3_q4irf")
-theme_override_styles/focus = ExtResource("3_q4irf")
+theme_override_styles/normal = ExtResource("3_jhmsd")
+theme_override_styles/hover = ExtResource("3_jhmsd")
+theme_override_styles/pressed = ExtResource("3_jhmsd")
+theme_override_styles/disabled = ExtResource("3_jhmsd")
+theme_override_styles/focus = ExtResource("3_jhmsd")
 text = "Submit"
 
 [node name="Result" type="Label" parent="Panel"]
@@ -124,7 +126,7 @@ offset_left = 760.0
 offset_top = 67.0
 offset_right = 1060.0
 offset_bottom = 367.0
-texture = ExtResource("4_i2isc")
+texture = ExtResource("4_8faak")
 expand_mode = 1
 
 [node name="Exit" type="Button" parent="Panel"]
@@ -136,10 +138,11 @@ offset_bottom = 85.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_63jkh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mthrm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3kgta")
-icon = ExtResource("5_pxc5s")
+icon = ExtResource("5_k3rws")
 expand_icon = true
 
 [node name="Label3" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 636.0
 offset_top = 591.0
 offset_right = 806.0
@@ -150,13 +153,12 @@ vertical_alignment = 1
 
 [node name="CheckBox" type="CheckBox" parent="Panel/Label3"]
 layout_mode = 0
-offset_left = 242.0
-offset_top = 18.0
-offset_right = 258.0
-offset_bottom = 34.0
-theme_override_font_sizes/font_size = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_kjpud")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a86ol")
-theme_override_styles/hover = SubResource("StyleBoxFlat_73cle")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_sl25e")
-theme_override_styles/focus = SubResource("StyleBoxFlat_os0so")
+offset_left = 240.0
+offset_top = 19.0
+offset_right = 256.0
+offset_bottom = 35.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_s6mtq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a4crt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kfs7q")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lbads")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3i7hx")
