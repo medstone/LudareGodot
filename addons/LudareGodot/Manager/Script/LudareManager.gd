@@ -1,5 +1,7 @@
 extends Node
 
+const HeatMapTrackerNode = preload("res://addons/LudareGodot/HeatMapNode/HeatMapTrackerNode.gd")
+
 enum Platforms {Ludare, Steam, Epic}
 const PlatformStrings = {Platforms.Ludare: "Ludare", Platforms.Steam: "Steam", Platforms.Epic: "Epic"}
 
@@ -8,6 +10,7 @@ var EventHttp: HTTPRequest
 var Single
 var GameId: String
 var GameSecret: String
+var GameSession: String
 var Platform: Platforms
 var OnClose: Callable
 var Callbacks: Dictionary
@@ -20,6 +23,13 @@ var StoredHash
 var CredentialsFile = "user://../Ludare/Credentials.txt"
 var EventsFile = "user://../Ludare/LocalEvents.txt"
 var EventRequests: Array
+var AnalyticsEvents: Dictionary
+var HeatMapActive: bool
+var MaxHeatMapTimer = 5
+var HeatMapTimer = MaxHeatMapTimer
+var NetPromoterMenu: PackedScene
+var LoadingScene: PackedScene
+var LoadingInst
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,14 +45,15 @@ func _ready():
 		StoredHash = credFile.get_line()
 		credFile.close()
 	_tryUploadData()
+	AnalyticsEvents.events = [];
 
 func _tryLoginLudare(username, password, hashed, remember):
+	_startLoading()
 	var headers = ["Content-Type: application/json"]
 	var url = "https://www.devpowered.com:8000/GameLogin"
 	LoginHttp.request_completed.connect(self._tryLoginResponse)
 	StoredUsername = username
 	
-	print(str(remember))
 	LoginHttp.request(url, headers, HTTPClient.METHOD_POST, "{ \"password\": \"" + password + "\", \"hashed\": \"" + str(hashed) + "\", \"secret\": \"" + GameSecret + "\", \"returnHash\": \"" + str(remember) + "\", \"username\": \"" + username + "\" }")
 	
 func _tryGetID(platform, id):
@@ -57,16 +68,17 @@ func _ludarePostUpdate(eventType):
 	var requestEntry = {}
 	requestEntry["url"] = "https://www.devpowered.com:8000" + eventType
 	EventHttp.request_completed.connect(self._eventResponse)
-	requestEntry["message"] = "{ \"userid\": \"" + PlayerId + "\", \"gameid\": \"" + GameId + "\", \"timestamp\": \"" + str(Time.get_unix_time_from_system()) + "\", \"secret\": \"" + GameSecret + "\" }"
+	requestEntry["message"] = "{ \"userid\": \"" + PlayerId + "\", \"gameid\": \"" + GameId + "\", \"timestamp\": \"" + str(Time.get_datetime_string_from_system(true, true)) + "\", \"secret\": \"" + GameSecret + "\", \"session\": \"" + GameSession + "\", \"analytics\" :" + JSON.stringify(AnalyticsEvents) + " }"
 	EventHttp.request(requestEntry["url"], headers, HTTPClient.METHOD_POST, requestEntry["message"])
 	EventRequests.push_back(requestEntry)
 
 func _tryLoginResponse(result, response_code, headers, body):
-	print(body.get_string_from_utf8())
+	_endLoading()
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	LoggedIn = json["success"]
 	if LoggedIn == true:
 		PlayerId = str(json["message"])
+		GameSession = str(json["session"])
 		_ludarePostUpdate("/RegisterGameStart")
 		if(json.has("hash") == true):
 			var credFile = FileAccess.open(CredentialsFile, FileAccess.WRITE)
@@ -139,6 +151,32 @@ func _process(delta):
 		if UpdateTimer <= 0:
 			_ludarePostUpdate("/RegisterGameContinue")
 			UpdateTimer = MaxUpdateTimer
+		HeatMapTimer -= delta
+		if HeatMapTimer <= 0 && HeatMapActive == true:
+			_registerHeatMap()
+			HeatMapTimer = MaxHeatMapTimer
+			
+func _registerHeatMap():
+	var loadedNode = get_tree().current_scene.name
+	var trackedNodes = HeatMapTrackerNode.TrackedItems
+	for node in trackedNodes:
+		var event = {}
+		event.sceneName = loadedNode
+		event.position = node.get_parent().global_position
+		_registerAnalyticsEvent("Heatmap_Entry", JSON.stringify(event))
+			
+func _registerAnalyticsEvent(eventName: String, payload: String):
+	var entry = {}
+	entry.session = GameSession
+	entry.eventType = eventName
+	entry.timestamp = Time.get_datetime_string_from_system(true, true)
+	entry.payload = payload
+	
+	AnalyticsEvents.events.push_back(entry)
+	
+func _ludareQuit():
+	var NPSMenu = NetPromoterMenu.instantiate()
+	get_tree().root.add_child.call_deferred(NPSMenu)
 
 func _tryUploadData():
 	var headers = ["Content-Type: application/json"]
@@ -155,3 +193,14 @@ func _tryUploadData():
 		eventTable = JSON.parse_string(readLine)
 	eventsFile.close()
 	DirAccess.remove_absolute(EventsFile)
+
+func _startLoading():
+	LoadingInst = LoadingScene.instantiate()
+	get_tree().root.add_child(LoadingInst)
+	pass
+	
+func _endLoading():
+	if LoadingInst != null:
+		LoadingInst.queue_free()
+		LoadingInst = null
+	pass

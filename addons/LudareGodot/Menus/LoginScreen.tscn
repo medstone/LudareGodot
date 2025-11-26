@@ -140,6 +140,7 @@ icon = ExtResource("5_pxc5s")
 expand_icon = true
 
 [node name="Label3" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 636.0
 offset_top = 591.0
 offset_right = 806.0

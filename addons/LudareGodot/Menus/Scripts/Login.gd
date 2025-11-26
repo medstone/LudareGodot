@@ -3,6 +3,8 @@ class_name LoginScreen
 
 var UsernameField
 var PasswordField
+var SubmitButton
+var ExitButton
 var Callbacks: Dictionary
 var closeAfter = 1.0
 var close = false
@@ -13,12 +15,12 @@ var RememberField
 func _ready():
 	UsernameField = get_node("Panel/Label/LineEdit")
 	PasswordField = get_node("Panel/Label2/LineEdit")
-	var submitButton = get_node("Panel/Button")
+	SubmitButton = get_node("Panel/Button")
 	LoginMessage = get_node("Panel/Result")
 	RememberField = get_node("Panel/Label3/CheckBox")
-	submitButton.pressed.connect(self._submitPressed)
-	var exitButton = get_node("Panel/Exit")
-	exitButton.pressed.connect(self._onClose)
+	SubmitButton.pressed.connect(self._submitPressed)
+	ExitButton = get_node("Panel/Exit")
+	ExitButton.pressed.connect(self._onClose)
 	if(LudareManager.Single.StoredUsername != null):
 		UsernameField.text = LudareManager.Single.StoredUsername
 	if(LudareManager.Single.StoredHash != null):
@@ -30,13 +32,22 @@ func _registerClose():
 
 func _submitPressed():
 	LudareManager.Single._addOnResponse(self, Callable(self, "_onResponse"))
+	UsernameField.editable = false
+	PasswordField.editable = false
+	RememberField.disabled = true
+	SubmitButton.disabled = true
+	ExitButton.disabled = true
 	if(PasswordField.text == "" ):
 		LudareManager.Single._tryLoginLudare(UsernameField.text, LudareManager.Single.StoredHash, true, RememberField.button_pressed)
 	else:
 		LudareManager.Single._tryLoginLudare(UsernameField.text, PasswordField.text, false, RememberField.button_pressed)
 
 func _onResponse(success: bool):
-	LudareManager.Single._removeOnResponse(self, Callable(self, "_onResponse"))
+	UsernameField.editable = true
+	PasswordField.editable = true
+	RememberField.disabled = false
+	SubmitButton.disabled = false
+	ExitButton.disabled = false
 	if success == true:
 		close = true
 		LoginMessage.text = "Login Sucessful"

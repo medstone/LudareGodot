@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3ipsflff6mgo"]
+[gd_scene load_steps=8 format=3 uid="uid://b3ipsflff6mgo"]
 
 [ext_resource type="Texture2D" uid="uid://cujk86kva05u8" path="res://addons/LudareGodot/Icons/Platform Selection.png" id="1_i7v58"]
 [ext_resource type="Script" path="res://addons/LudareGodot/DRMNodes/Scripts/DRMConfirmExit.gd" id="1_imj8k"]
+[ext_resource type="StyleBox" uid="uid://d0m4aq30dyg2a" path="res://addons/LudareGodot/Menus/SubmitStyleFlat.tres" id="3_4fxaj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kwoxn"]
 
@@ -70,6 +71,11 @@ offset_left = 208.0
 offset_top = -1787.5
 offset_right = 357.0
 offset_bottom = -1723.5
+theme_override_styles/normal = ExtResource("3_4fxaj")
+theme_override_styles/hover = ExtResource("3_4fxaj")
+theme_override_styles/pressed = ExtResource("3_4fxaj")
+theme_override_styles/disabled = ExtResource("3_4fxaj")
+theme_override_styles/focus = ExtResource("3_4fxaj")
 text = "Yes"
 
 [node name="DenyButton" type="Button" parent="Panel"]
@@ -83,4 +89,9 @@ offset_left = 670.0
 offset_top = -1787.5
 offset_right = 819.0
 offset_bottom = -1723.5
+theme_override_styles/normal = ExtResource("3_4fxaj")
+theme_override_styles/hover = ExtResource("3_4fxaj")
+theme_override_styles/pressed = ExtResource("3_4fxaj")
+theme_override_styles/disabled = ExtResource("3_4fxaj")
+theme_override_styles/focus = ExtResource("3_4fxaj")
 text = "No"

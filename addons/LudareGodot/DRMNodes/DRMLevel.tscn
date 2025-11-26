@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://b116tc5eq7hl7"]
+[gd_scene load_steps=6 format=3 uid="uid://b116tc5eq7hl7"]
 
 [ext_resource type="Script" path="res://addons/LudareGodot/DRMNodes/Scripts/DRMLudareFlowManager.gd" id="1_3dngs"]
 [ext_resource type="PackedScene" uid="uid://jnle0s1liv5n" path="res://addons/LudareGodot/DRMNodes/Nodes/DRMLoginScreen.tscn" id="2_58ci6"]
+[ext_resource type="PackedScene" uid="uid://do47udapdvibe" path="res://addons/LudareGodot/Menus/NetPromoterScore.tscn" id="2_gnbeh"]
 [ext_resource type="PackedScene" uid="uid://cfb57douh4plo" path="res://addons/LudareGodot/Manager/LudareManagerSetup.tscn" id="2_kqho7"]
-[ext_resource type="PackedScene" uid="uid://cjwyn74ybwmwe" path="res://TestScene.tscn" id="4_g1jab"]
+[ext_resource type="PackedScene" uid="uid://cnqf7tv3oag6e" path="res://addons/LudareGodot/Menus/LoadingMenu.tscn" id="3_uyiba"]
 
 [node name="DrmLevel" type="Node3D"]
 
 [node name="LudareManager" parent="." instance=ExtResource("2_kqho7")]
 GameId = ""
 GameSecret = ""
+NetPromoterScoreMenu = ExtResource("2_gnbeh")
+LoadingMenu = ExtResource("3_uyiba")
+HeatMapActive = true
 
 [node name="LudareDRMFlowManager" type="Node3D" parent="."]
 script = ExtResource("1_3dngs")
 DRMLoginScreen = ExtResource("2_58ci6")
-SceneToLoad = ExtResource("4_g1jab")

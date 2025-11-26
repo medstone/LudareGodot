@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnqf7tv3oag6e"]
+
+[ext_resource type="Texture2D" uid="uid://bevfbs81f12x8" path="res://addons/LudareGodot/Icons/spinner-of-dots.png" id="1_kyyp4"]
+[ext_resource type="Script" path="res://addons/LudareGodot/Menus/Scripts/LoadingMenuSpinner.gd" id="1_xorsb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_053vb"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="LoadingMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xorsb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 265.0
+offset_right = 1135.0
+offset_bottom = 815.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_053vb")
+
+[node name="Spinner-of-dots" type="Sprite2D" parent="Panel"]
+position = Vector2(275, 275)
+texture = ExtResource("1_kyyp4")

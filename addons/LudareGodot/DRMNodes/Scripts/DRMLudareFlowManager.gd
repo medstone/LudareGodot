@@ -15,8 +15,8 @@ func _process(delta):
 	pass
 
 func _onResponse(success: bool):
-	LudareManager.Single._removeOnResponse(self, Callable(self, "_onResponse"))
 	if(success == true):
+		LudareManager.Single._removeOnResponse(self, Callable(self, "_onResponse"))
 		if(DontLoadScene != true):
 			get_tree().change_scene_to_packed(SceneToLoad)
 		self.queue_free()

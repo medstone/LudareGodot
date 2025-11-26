@@ -1,0 +1,266 @@
+[gd_scene load_steps=14 format=3 uid="uid://do47udapdvibe"]
+
+[ext_resource type="Texture2D" uid="uid://cujk86kva05u8" path="res://addons/LudareGodot/Icons/Platform Selection.png" id="1_gyph1"]
+[ext_resource type="Script" path="res://addons/LudareGodot/Menus/Scripts/NetPromoterScore.gd" id="1_j7iuj"]
+[ext_resource type="StyleBox" uid="uid://d0m4aq30dyg2a" path="res://addons/LudareGodot/Menus/SubmitStyleFlat.tres" id="2_3mcpr"]
+[ext_resource type="Texture2D" uid="uid://c84570b0tp6j" path="res://addons/LudareGodot/Icons/LudareLogoTransparent.png" id="3_mkwuv"]
+[ext_resource type="ButtonGroup" uid="uid://b660kopkjyisx" path="res://addons/LudareGodot/Menus/NetPromoterButtonGroup.tres" id="4_3var7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aykau"]
+texture = ExtResource("1_gyph1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ru8ho"]
+font_size = 30
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_52on3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh6m3"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0kns"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4y16"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df4o4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_2vpb1"]
+font_size = 24
+
+[node name="NetPromoterScore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j7iuj")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 60.0
+offset_top = 90.0
+offset_right = 1860.0
+offset_bottom = 990.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_aykau")
+
+[node name="SubmitButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 1156.0
+offset_top = 655.0
+offset_right = 1456.0
+offset_bottom = 718.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_3mcpr")
+theme_override_styles/hover = ExtResource("2_3mcpr")
+theme_override_styles/pressed = ExtResource("2_3mcpr")
+theme_override_styles/disabled = ExtResource("2_3mcpr")
+theme_override_styles/focus = ExtResource("2_3mcpr")
+text = "Submit"
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 30.0
+offset_right = 1060.0
+offset_bottom = 330.0
+texture = ExtResource("3_mkwuv")
+expand_mode = 1
+
+[node name="ExitButton" type="Button" parent="Panel"]
+offset_left = 373.0
+offset_top = 655.0
+offset_right = 673.0
+offset_bottom = 718.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_3mcpr")
+theme_override_styles/hover = ExtResource("2_3mcpr")
+theme_override_styles/pressed = ExtResource("2_3mcpr")
+theme_override_styles/disabled = ExtResource("2_3mcpr")
+theme_override_styles/focus = ExtResource("2_3mcpr")
+text = "Exit"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 331.0
+offset_right = 1313.0
+offset_bottom = 373.0
+text = "How likely are you to reccomend this game to a friend?"
+label_settings = SubResource("LabelSettings_ru8ho")
+
+[node name="Panel" type="Panel" parent="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_52on3")
+layout_mode = 0
+offset_left = 450.0
+offset_top = 445.0
+offset_right = 1350.0
+offset_bottom = 534.0
+
+[node name="Value0" type="CheckBox" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 30.0
+offset_right = 216.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Label" type="Label" parent="Panel/Panel/Value0"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 16.0
+offset_bottom = 43.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_2vpb1")
+horizontal_alignment = 1
+
+[node name="Value1" type="CheckBox" parent="Panel/Panel"]
+offset_left = 250.0
+offset_top = 30.0
+offset_right = 266.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Value2" type="CheckBox" parent="Panel/Panel"]
+offset_left = 300.0
+offset_top = 30.0
+offset_right = 316.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Value3" type="CheckBox" parent="Panel/Panel"]
+offset_left = 350.0
+offset_top = 30.0
+offset_right = 366.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Value4" type="CheckBox" parent="Panel/Panel"]
+offset_left = 400.0
+offset_top = 30.0
+offset_right = 416.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Value5" type="CheckBox" parent="Panel/Panel"]
+offset_left = 450.0
+offset_top = 30.0
+offset_right = 466.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Label" type="Label" parent="Panel/Panel/Value5"]
+offset_top = 20.0
+offset_right = 16.0
+offset_bottom = 43.0
+text = "5
+"
+label_settings = SubResource("LabelSettings_2vpb1")
+horizontal_alignment = 1
+
+[node name="Value6" type="CheckBox" parent="Panel/Panel"]
+offset_left = 500.0
+offset_top = 30.0
+offset_right = 516.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Value7" type="CheckBox" parent="Panel/Panel"]
+offset_left = 550.0
+offset_top = 30.0
+offset_right = 566.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Value8" type="CheckBox" parent="Panel/Panel"]
+offset_left = 600.0
+offset_top = 30.0
+offset_right = 616.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Value9" type="CheckBox" parent="Panel/Panel"]
+offset_left = 650.0
+offset_top = 30.0
+offset_right = 666.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Value10" type="CheckBox" parent="Panel/Panel"]
+offset_left = 700.0
+offset_top = 30.0
+offset_right = 716.0
+offset_bottom = 46.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nh6m3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0kns")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4y16")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_df4o4")
+button_group = ExtResource("4_3var7")
+
+[node name="Label" type="Label" parent="Panel/Panel/Value10"]
+offset_left = -4.0
+offset_top = 20.0
+offset_right = 24.0
+offset_bottom = 54.0
+text = "10"
+label_settings = SubResource("LabelSettings_2vpb1")
+horizontal_alignment = 1
